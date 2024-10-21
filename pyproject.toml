@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools >= 61.0", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my_package"
+description = "my_package description"
+dynamic = ["version"]
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+mypackage = ["*.txt"]
