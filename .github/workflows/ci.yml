@@ -13,8 +13,8 @@ defaults:
     shell: bash -el {0}
 
 jobs:
-  tests:
-    name: Micromamba test
+  tests-mamba-not-isolated:
+    name: Micromamba test (--no-build-isolation)
     runs-on: ubuntu-latest
 
     steps:
@@ -25,4 +25,18 @@ jobs:
           create-args: >-
             python=3.12
       - run: pip install . --no-deps --no-build-isolation
+      - run: python -c 'import my_package'
+
+  tests-mamba-isolated:
+    name: Micromamba test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: mamba-org/setup-micromamba@v1
+        with:
+          environment-name: testing
+          create-args: >-
+            python=3.12
+      - run: pip install . --no-deps
       - run: python -c 'import my_package'
