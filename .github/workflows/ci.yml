@@ -20,5 +20,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: mamba-org/setup-micromamba@v1
+        with:
+          environment-name: testing
+          create-args: >-
+            python=3.12
       - run: pip install . --no-deps --no-build-isolation
       - run: python -c 'import my_package'
