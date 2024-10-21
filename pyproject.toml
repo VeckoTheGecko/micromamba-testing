@@ -12,7 +12,7 @@ requires-python = ">=3.10"
 where = ["src"]
 
 [tool.setuptools.package-data]
-my_package = ["*.txt"]
+"*" = ["*.txt"]
 
 [tool.setuptools_scm]
 version_file = "src/my_package/_version_setup.py"
